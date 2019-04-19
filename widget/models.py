@@ -49,7 +49,7 @@ class WidgetClassBase(object):
         try:
             kwargs = {"context": context, "slot": slot, "queryset": queryset, "options": options}
             context = self.render(**kwargs)
-        except Exception, e:
+        except Exception as e:
             raise e
         if hasattr(self, 'model'):
             context.update({'model': self.model})
@@ -179,7 +179,7 @@ class Widget(Orderable, Ownable, SiteRelated):
             from widget.widget_pool import get_widget
             widg = get_widget(self.widget_class)
             return hasattr(widg, "options")
-        except Exception, e:
+        except Exception as e:
             return False
 
     def admin_link(self):
